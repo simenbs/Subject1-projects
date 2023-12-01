@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adjektiv 2</title>
+
+    <style>
+        .button {
+            grid-area: 1 / 1 / 6 / 2;
+            border-style: groove;
+
+            background-color: aqua;
+            width: 100px;
+            height: 40px;
+            background-color: hotpink;
+            display: block;
+        }
+        .story {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div id="main"></div>
+    <script>
+        //Model--------------------------------------------------------------------------------------------------------------------------------------
+        //adjectives er et array med strings
+        let adjectives = ["sint", "gæren", "psykotisk", "avhengig", "blått", "glad", "sulten", "skuffa", "rød", "kaotisk",];
+        //chosenAdjectives er adjektivene brukeren velger, i rekkefølgen de velger dem
+        let chosenAdjectives = [];
+        //story...
+        let story = "Det var en gang et ___ , ___ troll. Om han ikke fikk seg mat, ble han ordentlig ___ og ___. " +
+                    "Dersom sola kom ble han også veldig ___ og gjemte seg fort under brua som var ___. Brua hans " +
+                    "var ___, men det måtte den var fordi han var ___. Det var historien om ___ trollet, nå vil han være ___ i fred.";
+
+
+        //View--------------------------------------------------------------------------------------------------------------------------------------
+        
+        function updateView(){
+            let html = document.getElementById("main"); //en referenase til main diven  <-- definerer en ren MVC dersom denne getElementById bare kalles på en gang.
+            let buttonString = ""; //tom string, brukes senere
+            html.innerHTML = ""; //tøm innerHTML, så vi ikke får dobbelt opp med knapper etc
+  
+  
+
+            //for hver index i adjectives arrayet, gjør den det inne i loopen
+            //når i er lik eller større lengden på arrayet, stopper loopen.
+            //Start: vi lager en ny variabel kalt i, som vi sier har en verdi på 0
+                // så sjekker vi om i er større enn adjectives
+                    // hvis den ikke er det, gjør vi det inne i loopen, også legger vi på 1 på i (i++)
+                    //så gjør den det om og om igjen, til i er større enn adjectives.length 
+            for (let i = 0; i < adjectives.length; i++) {
+                buttonString += /*HTML*/`
+                    <button class="button" onclick="addToHistory(${i})">
+                        ${adjectives[i]} 
+                    </button>
+                `; //vi bruker adjectives[i] for å hente ut ordet, og vi sender med bare i til addToHistory() funksjonen
+            }
+
+            html.innerHTML += /*HTML*/`
+                ${fillStory(story, chosenAdjectives)} ${buttonString}
+            `;
+        }
+
+
+        //Controller--------------------------------------------------------------------------------------------------------------------------------------
+        function addToHistory(wordIndex){ //vi tar imot i, så vi kan finne ordet brukeren trykka på i arrayet
+            chosenAdjectives.push(adjectives[wordIndex]); //vi legger til adjectives[wordIndex] (order brukeren trykket på) på slutten av chosenAdjectives arrayet
+            adjectives.splice(wordIndex, 1) //splice fjerner elementet på indexen til wordIndex, men bare 1 element. Så hvis du vil fjerne 3 kan du skrive wordIndex, 3
+            //^ det er den som gjør at knappene blir borte, fordi vi fjerner elementet fra arryet som knappene bruker
+            updateView(); //oppdater viewet så brukeren ser endringene
+        }
+
+        function fillStory(storyRef, wordsArray){ //storyRef er en Referanse til story stringen vår. wordsArray er arrayet med adjektiver brukeren trykket på
+            let wordIndex = 0; //vi lagrer index. Den brukes i loopen nedenfor.
+
+            //så lenge storyRef inneholder ___ OG wordIndexen ikke er større enn lengden på arrayet, så vil loopen kjøre.
+            //dvs. at når det ikke er flere ___ eller wordIndexen er større enn lengden på arrayet, vil loopen stoppe.
+            while (storyRef.includes("___") && wordIndex < wordsArray.length){
+                storyRef = storyRef.replace("___", wordsArray[wordIndex]); //replace bytter ut ___ med elementet i arrayet som er på posisjonen til wordIndex
+                wordIndex++; //vi øker wordIndex med 1
+            }
+
+            return storyRef; //returner storyRef til stedet funksjonen ble kalt fra.
+        }
+
+
+        updateView(); //vi kaller på updateView første gangen koden kjører, så vi ser noe som helst
+
+
+
+
+
+
+
+
+
+        //     variabel,           [        condition             ], hva skal jeg gjøre hvis condition er false
+        //for (let minVariabel = 0; minVariabel < mittArray.length; minVariabel++)
+            //starter med å deklarere en variabel, ofte kalt i eller index, jeg kalte den minVariabel i dette tilfellet
+            //kjører til condition er true. Som i dette tilfellet er om minVariabel er større enn mittArray.length
+            //hvis condition er false legger vi på 1 på variablen vår
+                //variablen blir deklarert en gang
+                //loopen vil kjøre hver gang condtion er false
+
+
+        //mittArray.forEach()
+        //denne loopen gjør noe, for hvert element i arrayet
+
+
+        //while(condtion)
+        //kjører så lenge condition er true
+
+        //do {
+        //   
+        //} while (condition)
+        //koden inne i loopen, vil alltid kjøre ferdig før den sjekker condition
+        //det vil den ikke i en vanlig while - da stopper loopen så fort condition blir false
+        //eksempel: hvis du har en while loop, med 10 linjer kode, og condition blir false, på linje 7, vil ikke linje 8, 9 eller 10 kjøre.
+        //          det vil den i en do while.
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

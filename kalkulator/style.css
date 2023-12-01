@@ -1,0 +1,152 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 50px;
+    margin-top: 50px;
+}
+
+button {
+    margin: 5px;
+    color: white;
+    font-weight: 600;
+    border-radius: 0.4rem;
+    border-color: #ff6e35;
+    background-color: #ff6e35;
+    border-style: none;
+    height: 25px;
+    min-width: min-content;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
+    text-align: center;
+    text-decoration: none;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff976d;
+}
+
+:root {
+    --bgColor: #202020;
+    --PrimaryColor: #3b3b3b;
+    --SecondaryColor: #323232;
+    --HighlightColor: #4cc2ff;
+    --fontColorPrimary: #fff;
+    --fontColorSecondary: #717171;
+    user-select: none;
+}
+
+.calc {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    background-color: var(--bgColor);
+    border: solid 1px #e4e4e4;
+    border-radius: 5px;
+    padding: 0.3em;
+    width: 325px;
+    height: 545px;
+    margin: 20px;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.75);
+}
+
+.calc > * {
+    color: #fff;
+    font-family: 'segoe ui', sans-serif;
+    cursor: default;
+}
+
+.display {
+    display: inline;
+    position: relative;
+    height: 20%;
+    justify-content: right;
+    /* background-color: red; */
+    cursor: text;
+}
+
+.display > * {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0.3em;
+    font-weight: 500;
+}
+
+.inputNumm {
+    height: 39px;
+    display: inline-block;
+    width: 325px;
+    text-align: right;
+}
+
+.inputHistory {
+    display: block;
+    position: relative;
+    height: 30px;
+    width: 100%;
+    font-size: 15px;
+    justify-content: right;
+    text-align: right;
+    color: rgb(190, 190, 190);
+    /* background-color: darkgray; */
+}
+
+.memorybuttons {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    z-index: 3;
+}
+
+.memorybuttons > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em 1em 0.5em 1em;
+    font-size: 14px;
+    width: 100%;
+}
+
+.memorybuttons > div:hover {
+    background-color: var(--PrimaryColor);
+}
+.memorybuttons > .inactive:hover {
+    background-color: var(--bgColor);
+}
+
+.memorybuttons > .inactive {
+    color: var(--fontColorSecondary)
+}
+
+.gridbuttons {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: repeat(6, 36%);
+    margin-top: 0.2em;
+}
+
+.gridbuttons > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    background-color: var(--SecondaryColor);
+    border-radius: 0.2em;
+}
+
+.gridbuttons > div:hover  {
+    color:#202020;
+    background-color: #ff8037;
+}
+
+.num {
+    background-color: var(--PrimaryColor) !important;
+}
+
+.num:hover {
+    color:#202020;
+    background-color: #ff8037 !important;
+}

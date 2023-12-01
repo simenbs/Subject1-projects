@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+
+    <div class="teller">
+        <button class="button" onclick="mindre()"> mindre ◀ </button>
+
+        <div id="value" class="value">l</div>
+
+           <button class="button" onclick="mer()"> mer ▶ </button>
+    </div>
+
+    <script>
+        let verdi = 1;
+        let value = document.getElementById('value');
+        value.innerHTML = verdi;
+        
+        function mer() {
+            verdi = verdi + 1;
+            value.innerHTML = verdi;
+        }
+        function mindre() {
+            verdi = verdi - 1;
+            value.innerHTML = verdi;
+        }
+    </script>
+
+</body>
+
+</html>
+
+</html>
